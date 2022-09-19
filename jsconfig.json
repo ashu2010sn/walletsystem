@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": false,
+		"baseUrl": ".",
+		"paths": {
+			"@root/*": [
+				"./*"
+			]
+		}
+	},
+	"exclude": [
+		"node_modules"
+	],
+	"moduleResolution": "node"
+}
