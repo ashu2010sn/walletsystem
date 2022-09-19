@@ -4,10 +4,32 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 var logger = require('morgan');
+const mongoose = require('mongoose')
+
+let uri = `mongodb://`
+
+if (process.env.MONGO_USER && process.env.MONGO_USER.length) {
+	uri += `${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@`
+}
+uri += `${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`
+mongoose.connect(
+	uri,
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	},
+	err => {
+		if (err) {
+			console.log(err)
+			process.exit(1)
+		}
+		console.log('Connected to mongo server...')
+	}
+)
 
 //routes
-var indexRouter = require('@root/routes/index');
-var usersRouter = require('@root/routes/users');
+// var indexRouter = require('@root/routes');
+var walletRouter = require('@wallet/routes');
 
 var app = express();
 
@@ -25,8 +47,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+app.use('/', walletRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
