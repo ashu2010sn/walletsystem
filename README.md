@@ -9,6 +9,7 @@ The Wallet system is basic application to handle wallet transanctions and other 
 
 * Node 14
 * Git
+* Mongo DB
 ## Common setup
 
 Clone the repo and install the dependencies.
