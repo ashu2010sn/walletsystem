@@ -5,6 +5,11 @@ The Wallet system is basic application to handle wallet transanctions and other 
 - creating new wallet
 - make transactions on any specific wallet
 - get all the details of wallet on real time
+
+## Heroku Info
+Web URL: https://wallet-app-demo.herokuapp.com/
+Git URL: https://git.heroku.com/wallet-app-demo.git
+
 ## Requirements
 
 * Node 14
