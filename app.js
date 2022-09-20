@@ -8,12 +8,13 @@ const cors = require('cors')
 
 const mongoose = require('mongoose')
 
-let uri = `mongodb://`
+let uri = `mongodb+srv://`
 
 if (process.env.MONGO_USER && process.env.MONGO_USER.length) {
 	uri += `${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@`
 }
-uri += `${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`
+// uri += `${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`
+uri += `${process.env.MONGO_HOST}/${process.env.MONGO_DB}?authSource=admin`
 mongoose.connect(
 	uri,
 	{
