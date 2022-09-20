@@ -51,19 +51,33 @@ Open [http://localhost:3000](http://localhost:3000) and take a look around.
 /setup
 ```
 To setup a new wallet and get the id of new wallet
+type: Post
+body:{
+    name: String,
+    amount: Number
+}
+
 
 ```bash
 /transact/:walletId
 ```
 To perform any transaction on given wallet id
+type: Post
+body:{
+    amount: Number,
+    description: String
+}
 
 ```bash
 /transactions
 ```
-query params: walletId, skip:Number, limit:Number 
 To get the data of transactions
+type: Get
+query params: walletId, skip:Number, limit:Number 
 
 ```bash
 /wallet/:id
 ```
 To get the details of wallet
+type: Get
+
