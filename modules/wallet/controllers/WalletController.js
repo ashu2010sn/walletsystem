@@ -35,7 +35,7 @@ class WalletController {
             if(!wallet)
                 return Responder.respondWithNotFound(req, res, 'Incorrect wallet id')
             
-            wallet.balance = wallet.balance + req.body.amount
+            wallet.balance = (wallet.balance + (req.body.amount - 0)).toFixed(4)
             await wallet.save()
 
             let transaction = new Transaction()

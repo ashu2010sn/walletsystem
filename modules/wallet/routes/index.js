@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.post(
   '/setup', 
-  [validationRules.body.required("balance"), validationRules.body.hasPrecisionUpto("balance", 4), validationRules.body.required("name"), oneOf([validationRules.body.isNumber("balance"), validationRules.body.isDecimal("balance")])],
+  [validationRules.body.required("name"), validationRules.body.isStringAndLength("name", 3), validationRules.body.required("balance"), validationRules.body.hasPrecisionUpto("balance", 4), oneOf([validationRules.body.isNumber("balance"), validationRules.body.isDecimal("balance")])],
   Responder.validate.bind(Responder),
   WalletController.initWallet.bind(WalletController)
 )

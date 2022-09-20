@@ -27,8 +27,8 @@ module.exports = {
 	hasPrecisionUpto(path, length){
 		return body(path)
 			.custom(value => {
-				if((value + "").split(".")[1].length>length)
-					throw new Error('Invalid ' + path)
+				if((value + "").split(".")[1]?.length>length)
+					throw new Error(`Only ${length} precision after decimal accepted in ${path}`)
 				else return true
 			})
 	},

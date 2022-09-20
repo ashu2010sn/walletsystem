@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 var logger = require('morgan');
+const cors = require('cors')
+
 const mongoose = require('mongoose')
 
 let uri = `mongodb://`
@@ -41,7 +43,8 @@ app.enable('trust proxy')
 
 
 app.use(logger(process.env.ENV));
-// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
